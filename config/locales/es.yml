@@ -28,8 +28,8 @@
 #       enabled: "ON"
 
 
-en:
-  hello: "Hello world"
+es:
+  hello: "Hola mundo"
   products:
     index:
-      title: "Products"
+      title: "Productos"

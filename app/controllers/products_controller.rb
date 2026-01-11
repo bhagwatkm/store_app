@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_product, only: %i[ show edit update destroy ]
   def index
     @products = Product.all
@@ -32,7 +33,7 @@ class ProductsController < ApplicationController
   end 
   private
   def product_params
-    params.require(:product).permit(:name)
+    params.require(:product).permit(:name, :description, :featured_image, :inventory_count)
   end
   def set_product
     @product = Product.find(params[:id])

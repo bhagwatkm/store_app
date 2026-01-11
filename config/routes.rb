@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # get "products/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,23 +13,28 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  # resources :products
+  root "products#index"
+  resources :products do
+    resources :subscribers, only: [:create]
+  end
 
 # Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # ...
-  get "/products", to: "products#index"
+  # get "/products", to: "products#index"
 
-  get "/products/new", to: "products#new"
-  post "/products", to: "products#create"
+  # get "/products/new", to: "products#new"
+  # post "/products", to: "products#create"
 
-  get "/products/:id", to: "products#show"
+  # get "/products/:id", to: "products#show"
 
-  get "/products/:id/edit", to: "products#edit"
-  patch "/products/:id", to: "products#update"
-  put "/products/:id", to: "products#update"
+  # get "/products/:id/edit", to: "products#edit"
+  # patch "/products/:id", to: "products#update"
+  # put "/products/:id", to: "products#update"
 
-  delete "/products/:id", to: "products#destroy"
+  # delete "/products/:id", to: "products#destroy"
+ resource :unsubscribe, only: [ :show ]
 end
 
 
